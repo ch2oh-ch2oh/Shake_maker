@@ -1,4 +1,5 @@
 async function take_values (){
+    document.getElementById("output").value = [];
     var checkboxes = document.getElementsByClassName('checkbox');
     var checkboxesChecked = []; // можно в массиве их хранить, если нужно использовать
     for (var index = 0; index < checkboxes.length; index++) {

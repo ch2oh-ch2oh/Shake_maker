@@ -1,3 +1,15 @@
+import eel
+
+
+@eel.expose
+def convert_value_py(values):
+    res = get_receipts(values)
+    a = []
+    for i in res:
+        a.append(i.name)
+    return a
+
+
 cocktails = []
 
 
@@ -29,6 +41,6 @@ def get_receipts(ingredients):
     receipts = dict()
     for cocktail in cocktails:
         a = cocktail.ingredients - set(ingredients)
-        if len(a) <= 2:
+        if len(a) <= 1:
             receipts[cocktail] = a
     return receipts
