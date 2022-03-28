@@ -10,6 +10,11 @@ def convert_value_py(values):
     return a
 
 
+@eel.expose
+def decorator_for_random_cocktail(values):
+    return values
+
+
 cocktails = []
 
 
