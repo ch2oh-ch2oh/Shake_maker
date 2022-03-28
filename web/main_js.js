@@ -13,5 +13,11 @@ async function take_values (){
     document.getElementById("output").value = result;
     }
 
-document.getElementById("submit").onclick = take_values;
+async function random_cocktail (){
+    document.getElementById("output").value = [];
+    const result = await eel.convert_value_py(checkboxesChecked)();
+    document.getElementById("output").value = result;
+    }
 
+document.getElementById("submit").onclick = take_values;
+document.getElementById("random").onclick = random_cocktail;
