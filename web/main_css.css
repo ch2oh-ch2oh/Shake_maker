@@ -223,6 +223,15 @@ header a {
   font-weight: bold;
 }
 
+.mini_header {
+  font-family: Helvetica;
+  color: #fff;
+  font-size: 12px;
+  margin-top: 0px;
+  margin-left: 52px;
+  line-height: 101%;
+}
+
 .output {
   font-family: Helvetica;
   color: #fff;
@@ -255,19 +264,4 @@ header a {
   content: "";
   display: table;
   clear: both;
-}
-
-.mini_column1{
-  width: 10%;
-}
-
-.mini_column2:after {
-  margin-top: 0px;
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.mini_column3{
-
 }

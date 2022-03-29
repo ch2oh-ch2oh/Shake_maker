@@ -3,20 +3,22 @@ import random
 
 
 @eel.expose
-def convert_value_py(values):
-    res = cocktails.get_receipts(values)
+def convert_value_py(ingredients):
+    res = Cocktails()
+    result = res.get_receipts(ingredients)
+
     a = []
-    for i in res:
+    for i in result:
         a.append(i.name)
     return a
 
 
 @eel.expose
-def decorator_for_random_cocktail(values):
-    return values
+def decorator_for_random_cocktail():
+    return cocktails.get_random_receipt().name
 
 
-def create_cocktails():
+def create_Cocktails():
     global cocktails
     cocktails = Cocktails()
 
