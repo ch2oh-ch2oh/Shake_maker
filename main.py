@@ -1,8 +1,6 @@
 import eel
 import apps
-import cgi
-import json
-import re
+
 
 if __name__ == '__main__':
     apps.create_cocktails()
