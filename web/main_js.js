@@ -10,7 +10,7 @@ async function take_values (){
 //    return checkboxesChecked; // для использования в нужном месте
     const result = await eel.convert_value_py(checkboxesChecked)();
     //document.getElementById("res").innerHTML+=result;
-    document.getElementById("output").value = result;
+    document.getElementById("output").innerHTML = result;
     }
 
 async function random_cocktail (){
