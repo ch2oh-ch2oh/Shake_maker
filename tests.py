@@ -1,13 +1,17 @@
 import pytest
 from pytest_mock import MockerFixture
 
-import apps
 from apps import Cocktails
 
 
+@pytest.fixture(scope='session')
+def cocktails_obj():
+    return Cocktails()
+
+
 @pytest.fixture(autouse=True)
-def clean_cocktails():
-    apps.cocktails = []
+def clean_cocktails(cocktails_obj):
+    cocktails_obj.cocktails = []
 
 
 def test_read__correct_data(mocker: MockerFixture):
@@ -26,7 +30,7 @@ def test_read__correct_data(mocker: MockerFixture):
 """
 
     mocker.patch('builtins.open', mocker.mock_open(read_data=test_file))
-    c=Cocktails()
+    c = Cocktails()
     assert len(c.cocktails) == 2
     assert all([isinstance(r, Cocktails.Cocktail) for r in c.cocktails])
 
@@ -35,11 +39,13 @@ def test_read__empty_data(mocker: MockerFixture):
     test_file = """"""
 
     mocker.patch('builtins.open', mocker.mock_open(read_data=test_file))
-    c=Cocktails()
+    c = Cocktails()
     assert not c.cocktails
 
 
-def test_get_receipts__empty_list(): ...
+def test_get_receipts__empty_list(cocktails_obj):
+    result = cocktails_obj.get_receipts([])
+    assert not result
 
 
 def test_get_receipts__list_with_one_ingredient(): ...

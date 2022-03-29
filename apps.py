@@ -18,7 +18,7 @@ def decorator_for_random_cocktail():
     return cocktails.get_random_receipt().name
 
 
-def create_Cocktails():
+def create_cocktails():
     global cocktails
     cocktails = Cocktails()
 
