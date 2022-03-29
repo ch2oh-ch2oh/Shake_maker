@@ -5,6 +5,8 @@ import random
 @eel.expose
 def convert_value_py(ingredients):
     result = cocktails.get_receipts(ingredients)
+    if not result:
+        return "Не нашлось коктейля с выбранными ингредиентами :с"
     s = ""
     for i in result:
         s += i[0].create_str(i[1])
