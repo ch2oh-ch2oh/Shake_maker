@@ -15,8 +15,8 @@ async function take_values (){
 
 async function random_cocktail (){
     document.getElementById("output").value = [];
-    const result = await eel.decorator_for_random_cocktail()()
-    document.getElementById("output").value = result;
+    const result = await eel.decorator_for_random_cocktail()();
+    document.getElementById("output").innerHTML = result;
     }
 
 document.getElementById("submit").onclick = take_values;
