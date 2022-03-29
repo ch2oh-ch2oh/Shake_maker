@@ -2,7 +2,7 @@ import pytest
 from pytest_mock import MockerFixture
 
 import apps
-from apps import read, Cocktail
+from apps import Cocktails
 
 
 @pytest.fixture(autouse=True)
@@ -26,17 +26,17 @@ def test_read__correct_data(mocker: MockerFixture):
 """
 
     mocker.patch('builtins.open', mocker.mock_open(read_data=test_file))
-    read()
-    assert len(apps.cocktails) == 2
-    assert all([isinstance(r, Cocktail) for r in apps.cocktails])
+    c=Cocktails()
+    assert len(c.cocktails) == 2
+    assert all([isinstance(r, Cocktails.Cocktail) for r in c.cocktails])
 
 
 def test_read__empty_data(mocker: MockerFixture):
     test_file = """"""
 
     mocker.patch('builtins.open', mocker.mock_open(read_data=test_file))
-    read()
-    assert not apps.cocktails
+    c=Cocktails()
+    assert not c.cocktails
 
 
 def test_get_receipts__empty_list(): ...
