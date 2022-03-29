@@ -16,8 +16,7 @@ def decorator_for_random_cocktail(values):
     return values
 
 
-cocktails = []
-def create_Cocktails():
+def create_cocktails():
     global cocktails
     cocktails = Cocktails()
 
