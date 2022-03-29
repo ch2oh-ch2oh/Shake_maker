@@ -13,7 +13,7 @@ def convert_value_py(ingredients):
 
 @eel.expose
 def decorator_for_random_cocktail():
-    return cocktails.get_random_receipt().name
+    return cocktails.get_random_receipt().create_str([])
 
 
 def create_cocktails():
