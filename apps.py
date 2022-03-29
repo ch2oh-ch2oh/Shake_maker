@@ -4,13 +4,11 @@ import random
 
 @eel.expose
 def convert_value_py(ingredients):
-    res = Cocktails()
-    result = res.get_receipts(ingredients)
-
-    a = []
+    result = cocktails.get_receipts(ingredients)
+    s = ""
     for i in result:
-        a.append(i.name)
-    return a
+        s += i[0].create_str(i[1])
+    return s
 
 
 @eel.expose
@@ -18,7 +16,7 @@ def decorator_for_random_cocktail():
     return cocktails.get_random_receipt().name
 
 
-def create_Cocktails():
+def create_cocktails():
     global cocktails
     cocktails = Cocktails()
 
@@ -35,6 +33,16 @@ class Cocktails:
             self.components = components
             self.receipt = receipt
             self.ingredients = ingredients
+
+        def create_str(self, insufficient):
+            s = '<span style="font-size: 22px">' + self.name + '</span>' + '<br>'
+            for i in self.components:
+                if i.split()[0].lower() in insufficient:
+                    s += '<span style="margin-left: 50px; color:#b3d4fd;">' + i + '</span>' + '<br>'
+                else:
+                    s += '<span style="margin-left: 50px; ">' + i + '</span>' + '<br>'
+            s += '<span style="font-size: 20px">Рецепт</span><br>' + '<span style="">' + self.receipt + '</span>' + '<br><br>'
+            return s
 
     def read(self):
         with open("req.txt", 'r', encoding='utf-8') as file:
@@ -61,9 +69,9 @@ class Cocktails:
         for cocktail in self.cocktails:
             insufficient = cocktail.ingredients - set(ingredients)
             if len(cocktail.ingredients) - len(insufficient) > 1:
-                receipts.append([cocktail, len(insufficient)])
-        receipts.sort(key=lambda x: x[1])
-        return [x[0] for x in receipts]
+                receipts.append([cocktail, insufficient])
+        receipts.sort(key=lambda x: len(x[1]))
+        return receipts
 
     def get_random_receipt(self):
         return self.cocktails[random.randint(0, len(self.cocktails)) - 1]
