@@ -36,11 +36,13 @@ class Cocktails:
 
         def create_str(self, insufficient):
             s = '<span style="font-size: 22px">' + self.name + '</span>' + '<br>'
+            s+='<div style="margin-left: 50px;">'
             for i in self.components:
                 if i.split()[0].lower() in insufficient:
-                    s += '<span style="margin-left: 50px; color:#b3d4fd;">' + i + '</span>' + '<br>'
+                    s += '<span style=" color:#b3d4fd;">' + i + '</span>' + '<br>'
                 else:
-                    s += '<span style="margin-left: 50px; ">' + i + '</span>' + '<br>'
+                    s += '<span style=" ">' + i + '</span>' + '<br>'
+            s+= '</div>'
             s += '<span style="font-size: 20px">Рецепт</span><br>' + '<span style="">' + self.receipt + '</span>' + '<br><br>'
             return s
 
